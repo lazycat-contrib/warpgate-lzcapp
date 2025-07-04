@@ -1,0 +1,12 @@
+params:
+    - id: adminpassword
+      type: string
+      name: "warpgate admin password"
+      description: "the warpgate password you want to set"
+      default_value: "lazycat"
+
+locales:
+    zh:
+        adminpassword:
+            name: "Warpgate管理员密码"
+            description: "您要使用的WarpGate管理员admin的密码"
