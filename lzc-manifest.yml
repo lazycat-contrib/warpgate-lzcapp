@@ -5,14 +5,14 @@ application:
     - /
   upstreams:
     - location: /
-      backend: https://warpgate:8888/
+      backend: https://warpgate:{{ .U.http_port }}/
       disable_backend_ssl_verify: true # Warpgate uses self-signed TLS
   ingress:
     - protocol: tcp
-      port: 2222
+      port: "{{ .U.ssh_port }}"
       service: warpgate
     - protocol: tcp
-      port: 33306
+      port: "{{ .U.mysql_port }}"
       service: warpgate
   injects:
     - id: login-autofill
@@ -37,7 +37,7 @@ services:
         echo "warpgate.yaml already exists"
       else
         echo "warpgate.yaml does not exist, creating it"
-        /usr/local/bin/warpgate unattended-setup --data-path /data --http-port 8888 --ssh-port 2222 --mysql-port 33306  && cp /etc/warpgate.yaml /data/warpgate.yaml
+        /usr/local/bin/warpgate unattended-setup --data-path /data --http-port {{ .U.http_port }} --ssh-port {{ .U.ssh_port }} --mysql-port {{ .U.mysql_port }}  && cp /etc/warpgate.yaml /data/warpgate.yaml
       fi
       # Enable trust_x_forwarded_headers for reverse proxy support (SSO, correct redirect URLs)
       if grep -q 'trust_x_forwarded_headers' /lzcapp/var/data/warpgate.yaml; then
@@ -45,10 +45,3 @@ services:
       else
         sed -i '/^http:/a\  trust_x_forwarded_headers: true' /lzcapp/var/data/warpgate.yaml
       fi
-
-usage: |
-  Warpgate 堡垒机使用说明：
-  1. HTTP 管理界面：通过端口 8888 访问 Web 管理界面
-  2. SSH 代理：通过端口 2222 连接 SSH 代理
-  3. MySQL 代理：通过端口 33306 连接 MySQL 代理
-  4. 默认管理员用户名为 admin，密码为部署时设置的管理员密码

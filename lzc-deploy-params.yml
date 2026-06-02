@@ -3,10 +3,50 @@ params:
     type: secret
     name: "Warpgate Admin Password"
     description: "The password for Warpgate admin user"
-    default_value: "admin"
+    default_value: "$random(len=20)"
+
+  - id: http_port
+    type: string
+    name: "HTTP Port"
+    description: "Warpgate HTTP/HTTPS web interface port"
+    default_value: "8888"
+
+  - id: ssh_port
+    type: string
+    name: "SSH Port"
+    description: "Warpgate SSH proxy port"
+    default_value: "2222"
+
+  - id: mysql_port
+    type: string
+    name: "MySQL Port"
+    description: "Warpgate MySQL proxy port"
+    default_value: "33306"
 
 locales:
   zh:
     adminpassword:
       name: "Warpgate管理员密码"
       description: "您要使用的WarpGate管理员admin的密码"
+    http_port:
+      name: "HTTP 端口"
+      description: "Warpgate Web 管理界面端口"
+    ssh_port:
+      name: "SSH 端口"
+      description: "Warpgate SSH 代理端口"
+    mysql_port:
+      name: "MySQL 端口"
+      description: "Warpgate MySQL 代理端口"
+  en:
+    adminpassword:
+      name: "Admin Password"
+      description: "The password for Warpgate admin user"
+    http_port:
+      name: "HTTP Port"
+      description: "Warpgate HTTP/HTTPS web interface port"
+    ssh_port:
+      name: "SSH Port"
+      description: "Warpgate SSH proxy port"
+    mysql_port:
+      name: "MySQL Port"
+      description: "Warpgate MySQL proxy port"
