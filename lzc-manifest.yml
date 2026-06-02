@@ -6,7 +6,7 @@ application:
   upstreams:
     - location: /
       backend: https://warpgate:8888/
-      disable_backend_ssl_verify: true  # Warpgate uses self-signed TLS
+      disable_backend_ssl_verify: true # Warpgate uses self-signed TLS
   ingress:
     - protocol: tcp
       port: 2222
@@ -17,7 +17,7 @@ application:
   injects:
     - id: login-autofill
       when:
-        - /
+        - /login
       do:
         - src: builtin://simple-inject-password
           params:
