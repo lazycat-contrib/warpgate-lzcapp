@@ -9,10 +9,10 @@ application:
       disable_backend_ssl_verify: true # Warpgate uses self-signed TLS
   ingress:
     - protocol: tcp
-      port: "{{ .U.ssh_port }}"
+      port: { { .U.ssh_port } }
       service: warpgate
     - protocol: tcp
-      port: "{{ .U.mysql_port }}"
+      port: { { .U.mysql_port } }
       service: warpgate
   injects:
     - id: login-autofill
