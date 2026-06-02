@@ -1,0 +1,19 @@
+package: community.lazycat.app.warpgate
+version: 0.24.1
+name: warpgate
+description: "无需配置的ssh/http/pg和mysql堡垒机服务"
+min_os_version: 1.5.0
+homepage: https://github.com/warp-tech/warpgate
+author: warp-tech
+
+permissions:
+  required:
+    - net.internet
+
+locales:
+  zh:
+    name: "Warpgate"
+    description: "无需配置的ssh/http/pg和mysql堡垒机服务"
+  en:
+    name: "Warpgate"
+    description: "SSH/HTTP/PG and MySQL bastion server with zero configuration"
