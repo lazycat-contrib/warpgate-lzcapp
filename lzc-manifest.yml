@@ -23,11 +23,10 @@ application:
           params:
             user: "{{ .U.login_user }}"
             password: "{{ .U.adminpassword }}"
-
 services:
   warpgate:
-    # upstream: ghcr.io/warp-tech/warpgate:0.26.0
-    image: ghcr.1ms.run/warp-tech/warpgate:0.26.0
+    # upstream: ghcr.io/warp-tech/warpgate:0.28.6
+    image: ghcr.1ms.run/warp-tech/warpgate:0.28.6
     binds:
       - /lzcapp/var/data:/data
     environment:
