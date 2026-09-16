@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/warpgate.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: warpgate
+
+build:
+  run_buildscript: false
+
+images:
+  - id: warpgate
+    target: service
+    service: warpgate
+    source: ghcr.io/warp-tech/warpgate
+    channel: stable
+    sort: semver
+    tag_regex: '^v?\d+\.\d+\.\d+$'
+    delivery:
+      mode: mirror
+
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Warpgate
+    summary: "无需配置的ssh/http/pg和mysql堡垒机服务"

@@ -9,10 +9,10 @@ application:
       disable_backend_ssl_verify: true # Warpgate uses self-signed TLS
   ingress:
     - protocol: tcp
-      port: { { .U.ssh_port } }
+      port: "{{ .U.ssh_port }}"
       service: warpgate
     - protocol: tcp
-      port: { { .U.mysql_port } }
+      port: "{{ .U.mysql_port }}"
       service: warpgate
   injects:
     - id: login-autofill
@@ -26,8 +26,8 @@ application:
 
 services:
   warpgate:
-    # ghcr.io/warp-tech/warpgate:0.24.1
-    image: registry.lazycat.cloud/czyt/warp-tech/warpgate:936db9d9dffbc5ac
+    # upstream: ghcr.io/warp-tech/warpgate:0.26.0
+    image: ghcr.1ms.run/warp-tech/warpgate:0.26.0
     binds:
       - /lzcapp/var/data:/data
     environment:
