@@ -1,5 +1,5 @@
 package: community.lazycat.app.warpgate
-version: 0.28.6
+version: 0.29.0
 name: warpgate
 description: "无需配置的ssh/http/pg和mysql堡垒机服务"
 min_os_version: "1.5.0"
