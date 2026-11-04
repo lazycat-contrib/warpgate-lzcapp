@@ -1,4 +1,5 @@
 package: community.lazycat.app.warpgate
+license: Apache-2.0
 version: 0.0.0
 name: warpgate
 description: "无需配置的ssh/http/pg和mysql堡垒机服务"
