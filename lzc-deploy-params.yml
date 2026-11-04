@@ -3,7 +3,7 @@ params:
     type: secret
     name: "Warpgate Admin Password"
     description: "The password for Warpgate admin user"
-    default_value: "admin"
+    default_value: "$random(len=20)"
 
   - id: http_port
     type: string

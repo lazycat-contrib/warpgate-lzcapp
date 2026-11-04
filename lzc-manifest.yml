@@ -21,7 +21,7 @@ application:
       do:
         - src: builtin://simple-inject-password
           params:
-            user: "{{ .U.login_user }}"
+            user: "admin"
             password: "{{ .U.adminpassword }}"
 services:
   warpgate:
@@ -44,3 +44,17 @@ services:
       else
         sed -i '/^http:/a\  trust_x_forwarded_headers: true' /lzcapp/var/data/warpgate.yaml
       fi
+usage: |
+  Warpgate 是零配置堡垒机/跳板机：统一代理 SSH、HTTP/HTTPS、MySQL 与 PostgreSQL
+  访问，支持会话录制、权限审批与 SSO，适合把内网服务安全地开放给团队。
+
+  首次打开用内置管理员账号登录：
+    - 用户名：admin
+    - 密码：安装时填写的「管理员密码」（默认随机生成）
+
+  用户可在「设置 → 用户」中创建，并为每个用户单独授权可访问的目标。
+  SSH / MySQL 代理端口可在安装时自定义（默认 2222 / 33306）。
+
+  说明：
+    - 应用自带账号体系，直接对外开放由 Warpgate 自己的登录页鉴权，所以使用 public_path。
+    - 本包未做实机验证。
